@@ -10,11 +10,11 @@ jobs:
     steps:
       # Checkout code
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Set up JDK
       - name: Set up JDK 11
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11
@@ -26,7 +26,7 @@ jobs:
 
       # Upload cucumber HTML report as artifact
       - name: Upload Cucumber HTML Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cucumber-html-report
           path: target/HTML-reports
