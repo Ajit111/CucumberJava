@@ -1,4 +1,4 @@
-name: Cucumber Tests
+name: Automation-Cucumber Tests
 
 on:
   schedule:
