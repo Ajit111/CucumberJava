@@ -1,4 +1,4 @@
-name: Manual-Cucumber Tests
+name: Manual Cucumber Tests
 
 on:
   schedule:
@@ -23,8 +23,26 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Build project
-        run: mvn clean install -DskipTests
+      - name: Build and run tests
+        run: mvn clean verify
 
-      - name: Run RunnerTest
-        run: mvn -Dtest=Runner.RunnerTest test
+      - name: Upload Cucumber HTML Report as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-html-report
+          path: target/HTML-reports
+
+      # Add timestamped folder name for report history
+      - name: Prepare timestamped reports folder
+        run: |
+          TIMESTAMP=$(date +'%Y-%m-%d_%H-%M-%S')
+          mkdir -p reports/$TIMESTAMP
+          cp -r target/HTML-reports/* reports/$TIMESTAMP
+          echo "REPORT_DIR=reports/$TIMESTAMP" >> $GITHUB_ENV
+
+      # Deploy reports folder to GitHub Pages (keeps history)
+      - name: Deploy report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: reports
