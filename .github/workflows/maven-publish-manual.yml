@@ -1,4 +1,4 @@
-name: Cucumber Tests
+name: Manual-Cucumber Tests
 
 on:
   schedule:
