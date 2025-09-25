@@ -34,7 +34,7 @@
             <version>5.8.1</version>
             <scope>test</scope>
         </dependency>
- 
+     
         <!-- JUnit for legacy support -->
         <dependency>
             <groupId>junit</groupId>
@@ -45,16 +45,16 @@
  
         <!-- Cucumber for BDD testing -->
         <dependency>
-        <groupId>io.cucumber</groupId>
-        <artifactId>cucumber-java</artifactId>
-        <version>7.11.1</version> <!-- Use the latest version available -->
-    </dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.11.1</version>
+        </dependency>
     
-    <dependency>
-        <groupId>io.cucumber</groupId>
-        <artifactId>cucumber-junit</artifactId>
-        <version>7.11.1</version> <!-- Use the latest version available -->
-    </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.11.1</version>
+        </dependency>
  
         <!-- Rest Assured for API testing -->
         <dependency>
@@ -104,13 +104,6 @@
             <artifactId>cucumber-reporting</artifactId>
             <version>5.7.5</version>
         </dependency>
-        <dependency>
-    <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>7.7.1</version> <!-- Adjust the version according to your project needs -->
-</dependency>
-
-    
     </dependencies>
  
     <build>
@@ -132,15 +125,17 @@
                 <version>5.7.5</version>
                 <executions>
                     <execution>
-                        <id>execution</id>
-                        <phase>test</phase>
+                        <id>generate-cucumber-report</id>
+                        <phase>verify</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
                             <projectName>CucumberJava</projectName>
                             <outputDirectory>target/HTML-reports</outputDirectory>
-                           
+                            <jsonFiles>
+                                <param>target/cucumber.json</param>
+                            </jsonFiles>
                         </configuration>
                     </execution>
                 </executions>
