@@ -36,7 +36,8 @@ public class login extends BaseClass {
 	   
 	}
 }
-//	
+//	This is for testing perpose only
+//----------------------------------------------------------------------------------
 //	@Then ("click on add to cart button") 
 //	public void click_on_add_to_cart_button() throws InterruptedException {
 //	L.click_on_add_to_cart_button();
